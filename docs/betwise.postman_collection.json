@@ -1,0 +1,192 @@
+{
+  "info": {
+    "name": "BetWise API",
+    "_postman_id": "betwise-api-20250619212454",
+    "description": "Postman collection for BetWise Sports Betting API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "User Registration",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"jamesbond\",\n  \"email\": \"bond@mi6.com\",\n  \"password\": \"007\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/users/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "users",
+            "register"
+          ]
+        }
+      }
+    },
+    {
+      "name": "User Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"bond@mi6.com\",\n  \"password\": \"007\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/users/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "users",
+            "login"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Fund Wallet (Dev)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"amount\": 1000\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/users/fund-wallet",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "users",
+            "fund-wallet"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Add Game (Admin)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"team1\": \"Arsenal\",\n  \"team2\": \"Chelsea\",\n  \"odds\": {\n    \"team1\": 1.5,\n    \"team2\": 2.3,\n    \"draw\": 3.1\n  },\n  \"matchDate\": \"2025-06-25T18:30:00.000Z\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/games/add",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "games",
+            "add"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Place Bet",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"gameId\": \"{{gameId}}\",\n  \"betType\": \"team1\",\n  \"stake\": 100\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/bets/place-bet",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "bets",
+            "place-bet"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Bet History",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/api/bets/history",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "bets",
+            "history"
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Debug dump files
+*.pid
+*.seed
+*.pid.lock
+
+# OS/system files
+.DS_Store
+Thumbs.db
+
+# Coverage from testing tools
+coverage/
+.nyc_output/
+
+# VSCode settings (optional)
+.vscode/
+
+# Build and cache folders
+dist/
+.cache/
+.tmp/
+
+

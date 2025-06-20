@@ -1,0 +1,165 @@
+openapi: 3.0.0
+info:
+  title: BetWise API
+  description: Postman collection for BetWise Sports Betting API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+paths:
+  /api/users/register:
+    post:
+      tags:
+        - General
+      summary: User Registration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: jamesbond
+                email: bond@mi6.com
+                password: '007'
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/users/login:
+    post:
+      tags:
+        - General
+      summary: User Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: bond@mi6.com
+                password: '007'
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/users/fund-wallet:
+    post:
+      tags:
+        - General
+      summary: Fund Wallet (Dev)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                amount: 1000
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer {{token}}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/games/add:
+    post:
+      tags:
+        - General
+      summary: Add Game (Admin)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                team1: Arsenal
+                team2: Chelsea
+                odds:
+                  team1: 1.5
+                  team2: 2.3
+                  draw: 3.1
+                matchDate: '2025-06-25T18:30:00.000Z'
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer {{admin_token}}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/bets/place-bet:
+    post:
+      tags:
+        - General
+      summary: Place Bet
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                gameId: '{{gameId}}'
+                betType: team1
+                stake: 100
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer {{token}}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/bets/history:
+    get:
+      tags:
+        - General
+      summary: Get Bet History
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer {{token}}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
