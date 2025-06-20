@@ -4,7 +4,6 @@ const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const app = express();
-
 app.use(express.json());
 
 if (!process.env.MONGODB_URL || !process.env.PORT) {
@@ -15,14 +14,17 @@ if (!process.env.MONGODB_URL || !process.env.PORT) {
 const MONGODB_URL = process.env.MONGODB_URL;
 const port = process.env.PORT;
 
-const userRouter = require(path.join(__dirname, 'routes', 'users'));
-const gameRouter = require(path.join(__dirname, 'routes', 'games'));
+const userRoutes = require('./routes/users');
+const gameRouter = require('./routes/games');
 const betRoutes = require('./routes/betRoutes');
 const logger = require('./utils/logger');
 
-app.use('/api/users', userRouter);
+app.use('/api/users', userRoutes);
 app.use('/api/games', gameRouter);
 app.use('/api/bets', betRoutes);
+
+// Health check
+app.get('/healthz', (req, res) => res.status(200).send('OK'));
 
 logger.info('Application has started');
 logger.warn('This is a warning');
