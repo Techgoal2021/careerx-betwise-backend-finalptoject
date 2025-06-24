@@ -39,6 +39,11 @@ router.post('/fund-wallet', authenticateUser, async (req, res) => {
   }
 });
 
+router.get('/test', (req, res) => {
+  res.send('User route is working!');
+});
+
+
 
 module.exports = router;
 
